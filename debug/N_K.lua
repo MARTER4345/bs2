@@ -148,7 +148,7 @@ end)
 
 local LPlrId = tostring(game.Players.LocalPlayer.UserId)
 game:GetService("Players").LocalPlayer.PlayerGui.GameGui.BottomRightContainer.SkipFrame.NameHolder.ChildAdded:Connect(function(child)
-  148  if child and child.Name == LPlrId then
+  if child and child.Name == LPlrId then
         task.wait(10)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SkipScene"):FireServer()
     end
