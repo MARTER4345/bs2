@@ -67,9 +67,10 @@ function DecancerCoins()
         for _, v in ipairs(CoinFolder:GetDescendants()) do
             if v and v:IsA("BasePart") then
                 if v:FindFirstChild("TouchInterest") then
-                    if v.Parent and v.Parent.Name == "ROUND SIX" then
+                    --[[if v.Parent and v.Parent.Name == "ROUND SIX" then
                         v.Name = api.generaterandomstring(12)
-                    end
+                        REMOVED DUE TO BUILT UP MEMORY LEAKS
+                    end]]
                     table.insert(CoinParts, v)
                 end
             end
@@ -139,14 +140,15 @@ player.CharacterAdded:Connect(function(char)
         humanoid.Died:Connect(function()
             temptabledead = true
             print("PDeD.")
-            task.wait(10)
+            task.wait(11)
             temptabledead = false
         end)
     end
 end)
 
+local LPlrId = tostring(game.Players.LocalPlayer.UserId)
 game:GetService("Players").LocalPlayer.PlayerGui.GameGui.BottomRightContainer.SkipFrame.NameHolder.ChildAdded:Connect(function(child)
-    if child and child.Name == api.lplrid() then
+  148  if child and child.Name == LPlrId then
         task.wait(10)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SkipScene"):FireServer()
     end
@@ -156,7 +158,7 @@ end)
 task.spawn(function()
     task.wait(10)
     local skipFrame = game:GetService("Players").LocalPlayer.PlayerGui.GameGui.BottomRightContainer.SkipFrame.NameHolder
-    if skipFrame:FindFirstChild("150148708") then
+    if skipFrame:FindFirstChild(LPlrId) then
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SkipScene"):FireServer()
     end
     
