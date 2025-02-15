@@ -11,7 +11,7 @@ end
 --WHITELIST BEFORE LOADING
 if not getgenv().whitelistUserIDs then print("No whitelist data found") return end
 
-for _,plr in pairs(game.Players:GetPlayers()) do
+for _,player in pairs(game.Players:GetPlayers()) do
     if not table.find(getgenv().whitelistUserIDs,player.UserId) then 
         game.Players.LocalPlayer:Kick("\nUnWhitelisted detected...")
     end
