@@ -17,7 +17,7 @@ for _,player in pairs(game.Players:GetPlayers()) do
     end
 end
 
-game.Players.PlayedAdded:Connect(function(player)
+game.Players.PlayerAdded:Connect(function(player)
     if not table.find(getgenv().whitelistUserIDs,player.UserId) then --
         game.Players.LocalPlayer:Kick("\nUnWhitelisted joined...")
     end
