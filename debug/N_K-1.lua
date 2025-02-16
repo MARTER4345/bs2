@@ -1,4 +1,4 @@
--- G_T__Y --
+
 local COREGUI = game:GetService("CoreGui")
 if not game:IsLoaded() then
     local notLoaded = Instance.new("Message")
@@ -8,7 +8,7 @@ if not game:IsLoaded() then
     notLoaded:Destroy()
 end
 
---WHITELIST BEFORE LOADING
+
 if not getgenv().whitelistUserIDs then print("No whitelist data found") return end
 
 for _,player in pairs(game.Players:GetPlayers()) do
@@ -86,7 +86,7 @@ function DecancerCoins()
                 if v:FindFirstChild("TouchInterest") then
                     --[[if v.Parent and v.Parent.Name == "ROUND SIX" then
                         v.Name = api.generaterandomstring(12)
-                        REMOVED DUE TO BUILT UP MEMORY LEAKS
+                        REMOVED DUE TO LKS
                     end]]
                     --[[if v.Parent and v.Parent.Name == "HEARTTOKEN" then
                         v.Name = api.generaterandomstring(12)
@@ -194,6 +194,7 @@ cutframe:GetPropertyChangedSignal("Visible"):Connect(isondia)
 game:GetService("Players").LocalPlayer.PlayerGui.GameGui.BottomRightContainer.SkipFrame.NameHolder.ChildAdded:Connect(function(child)
   if child and child.Name == LPlrId then
     while diacheck == false do task.wait(.1) end
+        task.wait(.5)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SkipScene"):FireServer()
     end
 end)
@@ -208,11 +209,13 @@ task.spawn(function()
         end
     end
     
+    if getgenv().VOwn then
     task.wait(40)
     game:GetService("ReplicatedStorage"):WaitForChild("VIPCommands"):WaitForChild("SetMap"):InvokeServer("Chapter 4")
     
     task.wait(3)
     game:GetService("ReplicatedStorage"):WaitForChild("VIPCommands"):WaitForChild("SetMode"):InvokeServer("Bot")
+    end
 end)
 
 while task.wait(5) do
